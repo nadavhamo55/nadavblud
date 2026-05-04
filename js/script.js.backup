@@ -1,0 +1,87 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const startImages = document.querySelectorAll(".start-image");
+  const startPage = document.getElementById("start-page");
+  const quizPage = document.getElementById("quiz-page");
+  const resultPage = document.getElementById("result-page");
+
+  const questionText = document.getElementById("questionText");
+  const optionsList = document.getElementById("optionsList");
+  const progress = document.getElementById("progress");
+  const backBtn = document.getElementById("backBtn");
+  const continueBtn = document.getElementById("continueBtn");
+
+  if (!startImages.length) {
+    console.error("Start images not found");
+    return;
+  }
+
+  let currentQuestion = 0;
+
+  const questions = [
+    { question: "Do you like spicy food?", options: ["Yes", "A little", "No"] },
+    { question: "How do you prefer to travel?", options: ["Walking", "Cab"] },
+    { question: "Do you need help from locals?", options: ["Yes", "Doesn't matter", "No"] },
+    { question: "How much do you care about clean streets?", options: ["Very", "Somewhat", "Not at all"] }
+  ];
+
+  startImages.forEach(image => {
+    image.addEventListener("click", startQuiz);
+  });
+
+  function startQuiz() {
+    startPage.classList.add("hidden");
+    quizPage.classList.remove("hidden");
+    currentQuestion = 0;
+    renderQuestion();
+  }
+
+  function renderQuestion() {
+    progress.textContent = `${currentQuestion + 1}/4`;
+    questionText.textContent = questions[currentQuestion].question;
+    optionsList.innerHTML = "";
+
+    questions[currentQuestion].options.forEach(option => {
+      const li = document.createElement("li");
+      li.innerHTML = `
+        <label>
+          <input type="radio" name="answer">
+          ${option}
+        </label>
+      `;
+      optionsList.appendChild(li);
+    });
+  }
+
+  continueBtn.addEventListener("click", () => {
+    if (currentQuestion < questions.length - 1) {
+      currentQuestion++;
+      renderQuestion();
+    } else {
+      showResult();
+    }
+  });
+
+  backBtn.addEventListener("click", () => {
+    if (currentQuestion > 0) {
+      currentQuestion--;
+      renderQuestion();
+    }
+  });
+
+  function showResult() {
+    quizPage.classList.add("hidden");
+    resultPage.classList.remove("hidden");
+
+    document.getElementById("result").innerHTML = `
+      <h2>Your match: Italy 🇮🇹</h2>
+      <p>Based on your answers, Italy fits your preferences best.</p>
+      <ul>
+        <li>Delta</li>
+        <li>United</li>
+        <li>American Airlines</li>
+        <li>Lufthansa</li>
+        <li>Air France</li>
+      </ul>
+    `;
+  }
+});
