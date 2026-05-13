@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Travel Quiz</title>
+  <title>European Travel Quiz</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -11,88 +11,52 @@
 </head>
 <body>
   <div id="start-page" class="hero">
-    <h1>Choose the country</h1>
-    <p>Complete all 4 quiz categories to discover your perfect travel destination!</p>
+    <h1>European Travel Quiz</h1>
+    <p>Answer 4 fun questions to discover your perfect European travel destination!</p>
     <div class="image-grid">
-      <div class="image-tile" tabindex="0">
-        <img src="images/food.svg" alt="Food" data-category="food">
+      <div class="image-tile" tabindex="0" data-category="food">
+        <img src="images/food.svg" alt="Food">
         <div class="caption">Food</div>
       </div>
-      <div class="image-tile" tabindex="0">
-        <img src="images/flags.svg" alt="European Flags" data-category="size">
+      <div class="image-tile" tabindex="0" data-category="size">
+        <img src="images/flags.svg" alt="European Flags">
         <div class="caption">European Flags</div>
       </div>
-      <div class="image-tile" tabindex="0">
-        <img src="images/clean-street.svg" alt="Clean Street" data-category="cleanliness">
+      <div class="image-tile" tabindex="0" data-category="cleanliness">
+        <img src="images/clean-street.svg" alt="Clean Street">
         <div class="caption">Clean Street</div>
       </div>
-      <div class="image-tile" tabindex="0">
-        <img src="images/people.svg" alt="People" data-category="friendliness">
+      <div class="image-tile" tabindex="0" data-category="friendliness">
+        <img src="images/people.svg" alt="People">
         <div class="caption">People</div>
       </div>
     </div>
   </div>
 
   <div id="quiz-page" class="page-frame hidden">
-    <div class="side-images left">
-      <div class="image-card landmark">
-        <img src="images/eiffel-tower.svg" alt="Eiffel Tower">
-        <div class="image-label">Paris landmark</div>
-      </div>
-      <div class="image-card food">
-        <img src="images/pasta.svg" alt="Italian food">
-        <div class="image-label">European cuisine</div>
-      </div>
-    </div>
-
     <div class="container">
+      <div class="quiz-image">
+        <img id="questionImage" src="" alt="Question Image">
+      </div>
       <div id="progress">Question 1/4</div>
       <div class="question">
         <h2 id="questionText"></h2>
         <ul class="options" id="optionsList"></ul>
       </div>
+
       <div class="button-row">
-        <button id="backBtn" disabled>Back</button>
-        <button id="continueBtn" disabled>Continue</button>
-      </div>
-    </div>
-
-    <div class="side-images right">
-      <div class="image-card people">
-        <img src="images/cafe-people.svg" alt="People at a café">
-        <div class="image-label">Travel people</div>
-      </div>
-      <div class="image-card landmark">
-        <img src="images/colosseum.svg" alt="Colosseum">
-        <div class="image-label">Roman landmark</div>
+        <button id="backBtn">Back</button>
+        <button id="continueBtn">Continue</button>
       </div>
     </div>
   </div>
 
+  <!-- RESULT PAGE -->
   <div id="result-page" class="page-frame hidden">
-    <div class="side-images left">
-      <div class="image-card landmark">
-        <img src="images/eiffel-tower.svg" alt="Eiffel Tower">
-        <div class="image-label">Paris landmark</div>
-      </div>
-      <div class="image-card food">
-        <img src="images/pasta.svg" alt="Italian food">
-        <div class="image-label">European cuisine</div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div id="result" class="result"></div>
-    </div>
-
-    <div class="side-images right">
-      <div class="image-card people">
-        <img src="images/cafe-people.svg" alt="People at a café">
-        <div class="image-label">Travel people</div>
-      </div>
-      <div class="image-card landmark">
-        <img src="images/colosseum.svg" alt="Colosseum">
-        <div class="image-label">Roman landmark</div>
-      </div>
-    </div>
+    <div class="container result" id="result"></div>
   </div>
+
+  <!-- JS -->
+  <script src="js/script.js"></script>
+</body>
+</html>
